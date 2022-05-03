@@ -1,0 +1,33 @@
+.table-wrapper {
+  min-height: 100%;
+  background-color: rgb(81 80 77);
+  padding-top: 100px;
+  transition: all 0.5s ease;
+}
+
+.table {
+  width: fit-content;
+  margin: 0 auto;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.table__row {
+  display: flex;
+  flex-direction: row;
+  transition: all 0.5s ease;
+}
+
+.left-billy {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  width: 350px;
+}
+
+.right-billy {
+  position: absolute;
+  right: -150px;
+  top: 100px;
+  width: 550px;
+}

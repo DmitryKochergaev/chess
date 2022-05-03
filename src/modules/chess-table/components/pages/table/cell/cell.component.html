@@ -1,0 +1,17 @@
+<div
+  class="cell-wrapper"
+  [ngClass]="{ 'cell-wrapper_black': cell?.color === 'black',
+               'cell-wrapper_selected': cell?.selected,
+               'cell-wrapper_move-suggestion': canMove,
+               'cell-wrapper_take-suggestion': canTake
+              }"
+  (click)="onCellClick()"
+>
+  <div class="cell-left-info" *ngIf="cell?.displayedInfo?.left">
+    {{ cell?.displayedInfo?.left }}
+  </div>
+  <div class="cell-bottom-info" *ngIf="cell?.displayedInfo?.bottom">
+    {{ cell?.displayedInfo?.bottom }}
+  </div>
+  <!--  {{ cell?.id }}-->
+</div>
