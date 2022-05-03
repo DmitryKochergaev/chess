@@ -111,6 +111,7 @@ const canSuggestThisMoveForPawn = (cells: ICell[][], pieceToMove: IPiece, i, j, 
   if (pieceToMove.color === 'black') {
     if (horizontalIndex - 2 === i) {
       return verticalIndex === j && !cells[i + 1][j].piece
+      console.log('test')
     }
 
     return verticalIndex !== j ? cells[i][j].piece : !cells[i][j].piece;
