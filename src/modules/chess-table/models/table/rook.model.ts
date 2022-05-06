@@ -19,25 +19,7 @@ export const getSuggestionMoveIdsForRook = (moveFrom: string, cells: ICell[][], 
   let tempResultForCell: { canMove: boolean, isLastMove: boolean };
 
   for (let i = 0; i < cells.length; i++) {
-    if (shouldCheckLeft) {
-      tempResultForCell = canSuggestThisMoveForLinearPiece(cells, pieceToMove, leftIndex, verticalIndex);
 
-      if (tempResultForCell.canMove) {
-        suggestionMoveIdsForRook.push(cells[leftIndex][verticalIndex].id);
-      }
-
-      shouldCheckLeft = !tempResultForCell.isLastMove;
-    }
-
-    if (shouldCheckRight) {
-      tempResultForCell = canSuggestThisMoveForLinearPiece(cells, pieceToMove, rightIndex, verticalIndex);
-
-      if (tempResultForCell.canMove) {
-        suggestionMoveIdsForRook.push(cells[rightIndex][verticalIndex].id);
-      }
-
-      shouldCheckRight = !tempResultForCell.isLastMove;
-    }
 
     if (shouldCheckTop) {
       tempResultForCell = canSuggestThisMoveForLinearPiece(cells, pieceToMove, horizontalIndex, topIndex);

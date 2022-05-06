@@ -61,6 +61,7 @@ export const getSuggestionMoveIds = (moveFrom: string, cells: ICell[][]) => {
       break;
     }
   }
+  console.log('test3');
 
   return suggestionMoveIds;
 };
