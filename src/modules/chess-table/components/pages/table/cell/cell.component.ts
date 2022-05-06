@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ICell } from "../../../../models/table.model";
+import { ICell } from "../../../../models/table/table.model";
 import { ChTableFacade } from "../../../../stores/table/table.facade";
 
 @Component({

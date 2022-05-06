@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { ITableState, tableFeatureKey } from "./table.reducers";
-import { IPiece } from "../../models/table.model";
+import { IPiece } from "../../models/table/table.model";
 
 const getTableSelector = createFeatureSelector<ITableState>(tableFeatureKey);
 

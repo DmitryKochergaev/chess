@@ -1,65 +1,6 @@
-export type Colors = 'black' | 'white';
-export type Pieces = 'pawn' | 'knight' | 'bishop' | 'rook' | 'queen' | 'king';
+import { ICell, IPiece } from "./table.model";
 
-export interface IPiece {
-  id: string;
-  type: Pieces;
-  color: Colors;
-  image: string;
-  position?: {
-    top: string,
-    left: string,
-  },
-  hasMoved?: boolean;
-}
-
-export interface ICell {
-  id: string;
-  piece: IPiece | null,
-  color: Colors;
-  displayedInfo?: {
-    left?: string;
-    bottom?: string;
-  }
-  selected?: boolean;
-  canMove?: boolean;
-}
-
-
-export const getSuggestionMoveIds = (moveFrom: string, cells: ICell[][]) => {
-  // moveFrom is two-digit number, where 1 digit is a horizontal index, and the second is a vertical index
-  let suggestionMoveIds: string[] = []
-  const pieceToMove = cells.flat().find(el => el.id === moveFrom)?.piece
-
-  switch (pieceToMove?.type) {
-    case "pawn": {
-      suggestionMoveIds = getSuggestionMoveIdsForPawn(moveFrom, cells, pieceToMove);
-      break;
-    }
-    case "knight": {
-      break
-    }
-    case "bishop": {
-      break
-    }
-    case "rook": {
-      break
-    }
-    case "queen": {
-      break
-    }
-    case "king": {
-      break
-    }
-    default: {
-      break;
-    }
-  }
-
-  return suggestionMoveIds;
-}
-
-const getSuggestionMoveIdsForPawn = (moveFrom: string, cells: ICell[][], pieceToMove: IPiece) => {
+export const getSuggestionMoveIdsForPawn = (moveFrom: string, cells: ICell[][], pieceToMove: IPiece) => {
   const suggestionMoveIdsForPawn: string[] = [];
   const [horizontalIndex, verticalIndex] = moveFrom.split('').map(el => +el);
   let i;
@@ -87,13 +28,13 @@ const getSuggestionMoveIdsForPawn = (moveFrom: string, cells: ICell[][], pieceTo
   for (i; i < iLimit; i++) {
     for (let j = verticalIndex - 1; j < verticalIndex + 2; j++) {
       if (canSuggestThisMoveForPawn(cells, pieceToMove, i, j, horizontalIndex, verticalIndex)) {
-        suggestionMoveIdsForPawn.push(cells[i][j].id)
+        suggestionMoveIdsForPawn.push(cells[i][j].id);
       }
     }
   }
 
   return suggestionMoveIdsForPawn;
-}
+};
 
 const canSuggestThisMoveForPawn = (cells: ICell[][], pieceToMove: IPiece, i, j, horizontalIndex, verticalIndex) => {
   // check if cell[i][j] is existing
@@ -110,8 +51,7 @@ const canSuggestThisMoveForPawn = (cells: ICell[][], pieceToMove: IPiece, i, j, 
   // so depending on it, we will check the cells above or below the pawn
   if (pieceToMove.color === 'black') {
     if (horizontalIndex - 2 === i) {
-      return verticalIndex === j && !cells[i + 1][j].piece
-      console.log('test')
+      return verticalIndex === j && !cells[i + 1][j].piece;
     }
 
     return verticalIndex !== j ? cells[i][j].piece : !cells[i][j].piece;
@@ -119,7 +59,7 @@ const canSuggestThisMoveForPawn = (cells: ICell[][], pieceToMove: IPiece, i, j, 
     if (horizontalIndex + 1 === i) {
       return verticalIndex !== j ? cells[i][j].piece : !cells[i][j].piece;
     }
-    return verticalIndex === j && !cells[i - 1][j].piece
+    return verticalIndex === j && !cells[i - 1][j].piece;
   }
 
-}
+};

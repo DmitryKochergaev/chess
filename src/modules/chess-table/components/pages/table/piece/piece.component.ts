@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
-import { IPiece } from "../../../../models/table.model";
+import { IPiece } from "../../../../models/table/table.model";
 
 @Component({
   selector: 'chess-piece',

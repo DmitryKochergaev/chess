@@ -1,4 +1,4 @@
-import { ICell, IPiece } from "../models/table.model";
+import { ICell, IPiece } from "../models/table/table.model";
 
 export const INITIAL_CELLS: ICell[][] = [
   [
@@ -91,15 +91,25 @@ export const INITIAL_CELLS: ICell[][] = [
     {
       id: '10',
       color: 'black',
-      piece: null,
       displayedInfo: {
         left: '7',
-      }
+      },
+      piece: {
+        id: '17',
+        type: 'bishop',
+        color: 'white',
+        image: 'wb',
+      },
     },
     {
       id: '11',
       color: 'white',
-      piece: null,
+      piece: {
+        id: '18',
+        type: 'rook',
+        color: 'black',
+        image: 'br',
+      },
     },
     {
       id: '12',

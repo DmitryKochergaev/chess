@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import * as actions from './table.actions';
 import * as selectors from './table.selectors';
 import { concatMap, of, withLatestFrom } from "rxjs";
-import { getSuggestionMoveIds, ICell } from "../../models/table.model";
+import { getSuggestionMoveIds, ICell } from "../../models/table/table.model";
 
 
 @Injectable({
