@@ -52,6 +52,9 @@ export const getSuggestionMoveIds = (moveFrom: string, cells: ICell[][]) => {
       break;
     }
     case "queen": {
+      suggestionMoveIds = getSuggestionMoveIdsForBishop(moveFrom, cells, pieceToMove).concat(
+        getSuggestionMoveIdsForRook(moveFrom, cells, pieceToMove)
+      );
       break;
     }
     case "king": {
