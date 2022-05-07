@@ -51,7 +51,7 @@ const canSuggestThisMoveForPawn = (cells: ICell[][], pieceToMove: IPiece, i, j, 
   // so depending on it, we will check the cells above or below the pawn
   if (pieceToMove.color === 'black') {
     if (horizontalIndex - 2 === i) {
-      return verticalIndex === j && !cells[i + 1][j].piece;
+      return verticalIndex === j && !cells[i][j].piece && !cells[i + 1][j].piece;
     }
 
     return verticalIndex !== j ? cells[i][j].piece : !cells[i][j].piece;
@@ -59,7 +59,7 @@ const canSuggestThisMoveForPawn = (cells: ICell[][], pieceToMove: IPiece, i, j, 
     if (horizontalIndex + 1 === i) {
       return verticalIndex !== j ? cells[i][j].piece : !cells[i][j].piece;
     }
-    return verticalIndex === j && !cells[i - 1][j].piece;
+    return verticalIndex === j && !cells[i][j].piece && !cells[i - 1][j].piece;
   }
 
 };

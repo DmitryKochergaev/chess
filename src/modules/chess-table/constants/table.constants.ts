@@ -5,12 +5,7 @@ export const INITIAL_CELLS: ICell[][] = [
     {
       id: '00',
       color: 'white',
-      piece: {
-        id: '1',
-        type: 'pawn',
-        color: 'white',
-        image: 'wp',
-      },
+      piece: null,
       displayedInfo: {
         left: '8',
       }
@@ -18,22 +13,13 @@ export const INITIAL_CELLS: ICell[][] = [
     {
       id: '01',
       color: 'black',
-      piece: {
-        id: '2',
-        type: 'pawn',
-        color: 'white',
-        image: 'wp',
-      },
+      piece: null,
+
     },
     {
       id: '02',
       color: 'white',
-      piece: {
-        id: '3',
-        type: 'pawn',
-        color: 'white',
-        image: 'wp',
-      },
+      piece: null,
     },
     {
       id: '03',
@@ -48,42 +34,26 @@ export const INITIAL_CELLS: ICell[][] = [
     {
       id: '04',
       color: 'white',
-      piece: {
-        id: '5',
-        type: 'pawn',
-        color: 'white',
-        image: 'wp',
-      },
+      piece: null,
+
     },
     {
       id: '05',
       color: 'black',
-      piece: {
-        id: '6',
-        type: 'pawn',
-        color: 'white',
-        image: 'wp',
-      },
+      piece: null,
+
     },
     {
       id: '06',
       color: 'white',
-      piece: {
-        id: '7',
-        type: 'pawn',
-        color: 'white',
-        image: 'wp',
-      },
+      piece: null,
+
     },
     {
       id: '07',
       color: 'black',
-      piece: {
-        id: '8',
-        type: 'pawn',
-        color: 'white',
-        image: 'wp',
-      },
+      piece: null,
+
     },
   ],
 
@@ -94,42 +64,37 @@ export const INITIAL_CELLS: ICell[][] = [
       displayedInfo: {
         left: '7',
       },
-      piece: {
-        id: '17',
-        type: 'bishop',
-        color: 'white',
-        image: 'wb',
-      },
+      piece: null,
     },
     {
       id: '11',
       color: 'white',
-      piece: {
-        id: '18',
-        type: 'rook',
-        color: 'black',
-        image: 'br',
-      },
+      piece: null
     },
     {
       id: '12',
       color: 'black',
-      piece: {
-        id: '19',
-        type: 'queen',
-        color: 'black',
-        image: 'bq',
-      },
+      piece: null
     },
     {
       id: '13',
       color: 'white',
-      piece: null,
+      piece: {
+        id: '20',
+        type: 'king',
+        color: 'white',
+        image: 'wk',
+      },
     },
     {
       id: '14',
       color: 'black',
-      piece: null,
+      piece: {
+        id: '21',
+        type: 'king',
+        color: 'black',
+        image: 'bk',
+      },
     },
     {
       id: '15',
@@ -143,8 +108,15 @@ export const INITIAL_CELLS: ICell[][] = [
     },
     {
       id: '17',
-      color: 'white',
-      piece: null,
+      color: 'white', piece: null,
+
+
+      // piece: {
+      //   id: '21',
+      //   type: 'king',
+      //   color: 'white',
+      //   image: 'wk',
+      // },
     },
   ],
 

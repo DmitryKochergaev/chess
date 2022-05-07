@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import * as actions from './table.actions';
 import * as selectors from './table.selectors';
 import { concatMap, of, withLatestFrom } from "rxjs";
-import { getSuggestionMoveIds, ICell } from "../../models/table/table.model";
+import { ICell } from "../../models/table/table.model";
 
 
 @Injectable({
@@ -56,9 +56,9 @@ export class ChTableEffects {
     }
 
     // cannot make illegal moves
-    if (oldMove && !getSuggestionMoveIds(oldMove,cells).includes(newMove)) {
-      return false;
-    }
+    // if (oldMove && !getSuggestionMoveIds(oldMove,cells).includes(newMove)) {
+    //   return false;
+    // }
 
     const flatedCells = cells.flat();
     const cellFrom = flatedCells.find(el => el.id === oldMove);

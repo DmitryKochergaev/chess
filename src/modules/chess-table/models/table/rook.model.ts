@@ -1,6 +1,6 @@
 import { canSuggestThisMoveForLinearPiece, ICell, IPiece } from "./table.model";
 
-export const getSuggestionMoveIdsForRook = (moveFrom: string, cells: ICell[][], pieceToMove: IPiece) => {
+export const getSuggestionForStraightMoveIds = (moveFrom: string, cells: ICell[][], pieceToMove: IPiece,isSingleDepthIteration: boolean = false) => {
   const suggestionMoveIdsForRook: string[] = [];
   const [horizontalIndex, verticalIndex] = moveFrom.split('').map(el => +el);
 
@@ -60,7 +60,7 @@ export const getSuggestionMoveIdsForRook = (moveFrom: string, cells: ICell[][], 
     }
 
 
-    if (!shouldCheckLeft && !shouldCheckRight && !shouldCheckTop && !shouldCheckBottom) {
+    if (!shouldCheckLeft && !shouldCheckRight && !shouldCheckTop && !shouldCheckBottom || isSingleDepthIteration) {
       break;
     }
 

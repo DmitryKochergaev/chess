@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import * as actions from './table.actions';
-import { getSuggestionMoveIds, ICell } from "../../models/table/table.model";
+import { getCellsCopyWithMovedPiece, getSuggestionMoveIds, ICell } from "../../models/table/table.model";
 import { INITIAL_CELLS } from "../../constants/table.constants";
 import copy from "fast-copy";
 
@@ -14,7 +14,7 @@ export interface ITableState {
 const initialState: ITableState = {
   moveFrom: null,
   cells: [...INITIAL_CELLS],
-}
+};
 
 const createTableReducer = createReducer(
   initialState,
@@ -29,57 +29,32 @@ const createTableReducer = createReducer(
         return {
           ...cell,
           selected,
-        }
-      })
-    })
+        };
+      });
+    });
 
     return {
       ...state,
       cells: copiedCells,
       moveFrom,
-    }
+    };
   }),
 
   on(actions.moveFinish, (state, { moveTo }) => {
     const { moveFrom, cells } = state;
 
-    const cellFrom = cells.flat().find(el => el.id === moveFrom) ?? {} as ICell
-
-    const copiedCells = copy(cells).map(cellRow => {
-      return cellRow.map(cell => {
-        let piece = cell.piece
-
-        if (cell.id === moveTo && cellFrom.piece) {
-          piece = {
-            ...cellFrom.piece,
-            hasMoved: true,
-          }
-        }
-
-        if (cell.id === moveFrom) {
-          piece = null
-        }
-
-        return {
-          ...cell,
-          piece,
-        }
-      })
-    })
-
-
     return {
       ...state,
-      cells: copiedCells,
+      cells: getCellsCopyWithMovedPiece(cells, moveFrom ?? '', moveTo),
       moveFrom: null,
-    }
+    };
   }),
 
   on(actions.moveAbort, (state) => {
     return {
       ...state,
       moveFrom: null,
-    }
+    };
   }),
 
   on(actions.moveSuggestionStart, (state) => {
@@ -91,14 +66,14 @@ const createTableReducer = createReducer(
         return {
           ...cell,
           canMove: suggestionMoveIds.includes(cell.id)
-        }
-      })
-    })
+        };
+      });
+    });
 
     return {
       ...state,
       cells: copiedCells,
-    }
+    };
   }),
 
   on(actions.cellsResetSuggestionAndHighlighting, (state) => {
@@ -110,16 +85,16 @@ const createTableReducer = createReducer(
           ...cell,
           canMove: false,
           selected: false,
-        }
-      })
-    })
+        };
+      });
+    });
 
     return {
       ...state,
       cells: copiedCells,
-    }
+    };
   })
-)
+);
 
 export function tableReducer(state, action) {
   return createTableReducer(state, action);

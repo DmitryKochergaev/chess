@@ -1,6 +1,6 @@
 import { canSuggestThisMoveForLinearPiece, ICell, IPiece } from "./table.model";
 
-export const getSuggestionMoveIdsForBishop = (moveFrom: string, cells: ICell[][], pieceToMove: IPiece) => {
+export const getSuggestionForDiagonallyMoveIds = (moveFrom: string, cells: ICell[][], pieceToMove: IPiece, isSingleDepthIteration: boolean = false) => {
   const suggestionMoveIdsForBishop: string[] = [];
   const [horizontalIndex, verticalIndex] = moveFrom.split('').map(el => +el);
 
@@ -63,7 +63,7 @@ export const getSuggestionMoveIdsForBishop = (moveFrom: string, cells: ICell[][]
       shouldCheckBottomLeft = !tempResultForCell.isLastMove;
     }
 
-    if (!shouldCheckTopLeft && !shouldCheckTopRightJ && !shouldCheckBottomRight && !shouldCheckBottomLeft) {
+    if (!shouldCheckTopLeft && !shouldCheckTopRightJ && !shouldCheckBottomRight && !shouldCheckBottomLeft || isSingleDepthIteration) {
       break;
     }
 
