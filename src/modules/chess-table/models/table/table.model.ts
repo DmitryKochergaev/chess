@@ -3,6 +3,7 @@ import { getSuggestionMoveIdsForPawn } from "./pawn.model";
 import { getSuggestionForStraightMoveIds } from "./rook.model";
 import { getSuggestionMoveIdsForKing } from "./king.model";
 import copy from "fast-copy";
+import { getSuggestionMoveIdsForKnight } from "./knight.model";
 
 export type Colors = 'black' | 'white';
 export type Pieces = 'pawn' | 'knight' | 'bishop' | 'rook' | 'queen' | 'king';
@@ -43,6 +44,7 @@ export const getSuggestionMoveIds = (moveFrom: string, cells: ICell[][], isEnemi
       break;
     }
     case "knight": {
+      suggestionMoveIds = getSuggestionMoveIdsForKnight(moveFrom, cells, pieceToMove);
       break;
     }
     case "bishop": {
@@ -71,7 +73,7 @@ export const getSuggestionMoveIds = (moveFrom: string, cells: ICell[][], isEnemi
   return suggestionMoveIds;
 };
 
-export const canSuggestThisMoveForLinearPiece = (cells: ICell[][], pieceToMove: IPiece, i, j): { canMove: boolean, isLastMove: boolean } => {
+export const canSuggestThisMoveForPiece = (cells: ICell[][], pieceToMove: IPiece, i, j): { canMove: boolean, isLastMove: boolean } => {
   if (!cells[i] || !cells[i][j] || cells[i][j].piece?.color === pieceToMove.color) {
     return { canMove: false, isLastMove: true };
   }

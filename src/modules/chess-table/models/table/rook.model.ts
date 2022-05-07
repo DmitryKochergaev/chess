@@ -1,4 +1,4 @@
-import { canSuggestThisMoveForLinearPiece, ICell, IPiece } from "./table.model";
+import { canSuggestThisMoveForPiece, ICell, IPiece } from "./table.model";
 
 export const getSuggestionForStraightMoveIds = (moveFrom: string, cells: ICell[][], pieceToMove: IPiece,isSingleDepthIteration: boolean = false) => {
   const suggestionMoveIdsForRook: string[] = [];
@@ -20,7 +20,7 @@ export const getSuggestionForStraightMoveIds = (moveFrom: string, cells: ICell[]
 
   for (let i = 0; i < cells.length; i++) {
     if (shouldCheckLeft) {
-      tempResultForCell = canSuggestThisMoveForLinearPiece(cells, pieceToMove, leftIndex, verticalIndex);
+      tempResultForCell = canSuggestThisMoveForPiece(cells, pieceToMove, leftIndex, verticalIndex);
 
       if (tempResultForCell.canMove) {
         suggestionMoveIdsForRook.push(cells[leftIndex][verticalIndex].id);
@@ -30,7 +30,7 @@ export const getSuggestionForStraightMoveIds = (moveFrom: string, cells: ICell[]
     }
 
     if (shouldCheckRight) {
-      tempResultForCell = canSuggestThisMoveForLinearPiece(cells, pieceToMove, rightIndex, verticalIndex);
+      tempResultForCell = canSuggestThisMoveForPiece(cells, pieceToMove, rightIndex, verticalIndex);
 
       if (tempResultForCell.canMove) {
         suggestionMoveIdsForRook.push(cells[rightIndex][verticalIndex].id);
@@ -40,7 +40,7 @@ export const getSuggestionForStraightMoveIds = (moveFrom: string, cells: ICell[]
     }
 
     if (shouldCheckTop) {
-      tempResultForCell = canSuggestThisMoveForLinearPiece(cells, pieceToMove, horizontalIndex, topIndex);
+      tempResultForCell = canSuggestThisMoveForPiece(cells, pieceToMove, horizontalIndex, topIndex);
 
       if (tempResultForCell.canMove) {
         suggestionMoveIdsForRook.push(cells[horizontalIndex][topIndex].id);
@@ -50,7 +50,7 @@ export const getSuggestionForStraightMoveIds = (moveFrom: string, cells: ICell[]
     }
 
     if (shouldCheckBottom) {
-      tempResultForCell = canSuggestThisMoveForLinearPiece(cells, pieceToMove, horizontalIndex, bottomIndex);
+      tempResultForCell = canSuggestThisMoveForPiece(cells, pieceToMove, horizontalIndex, bottomIndex);
 
       if (tempResultForCell.canMove) {
         suggestionMoveIdsForRook.push(cells[horizontalIndex][bottomIndex].id);

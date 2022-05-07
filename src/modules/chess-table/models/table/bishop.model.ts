@@ -1,4 +1,4 @@
-import { canSuggestThisMoveForLinearPiece, ICell, IPiece } from "./table.model";
+import { canSuggestThisMoveForPiece, ICell, IPiece } from "./table.model";
 
 export const getSuggestionForDiagonallyMoveIds = (moveFrom: string, cells: ICell[][], pieceToMove: IPiece, isSingleDepthIteration: boolean = false) => {
   const suggestionMoveIdsForBishop: string[] = [];
@@ -24,7 +24,7 @@ export const getSuggestionForDiagonallyMoveIds = (moveFrom: string, cells: ICell
 
   for (let i = 0; i < cells.length; i++) {
     if (shouldCheckTopLeft) {
-      tempResultForCell = canSuggestThisMoveForLinearPiece(cells, pieceToMove, topLeftI, topLeftJ);
+      tempResultForCell = canSuggestThisMoveForPiece(cells, pieceToMove, topLeftI, topLeftJ);
 
       if (tempResultForCell.canMove) {
         suggestionMoveIdsForBishop.push(cells[topLeftI][topLeftJ].id);
@@ -34,7 +34,7 @@ export const getSuggestionForDiagonallyMoveIds = (moveFrom: string, cells: ICell
     }
 
     if (shouldCheckTopRightJ) {
-      tempResultForCell = canSuggestThisMoveForLinearPiece(cells, pieceToMove, topRightI, topRightJ);
+      tempResultForCell = canSuggestThisMoveForPiece(cells, pieceToMove, topRightI, topRightJ);
 
       if (tempResultForCell.canMove) {
         suggestionMoveIdsForBishop.push(cells[topRightI][topRightJ].id);
@@ -44,7 +44,7 @@ export const getSuggestionForDiagonallyMoveIds = (moveFrom: string, cells: ICell
     }
 
     if (shouldCheckBottomRight) {
-      tempResultForCell = canSuggestThisMoveForLinearPiece(cells, pieceToMove, bottomRightI, bottomRightJ);
+      tempResultForCell = canSuggestThisMoveForPiece(cells, pieceToMove, bottomRightI, bottomRightJ);
 
       if (tempResultForCell.canMove) {
         suggestionMoveIdsForBishop.push(cells[bottomRightI][bottomRightJ].id);
@@ -54,7 +54,7 @@ export const getSuggestionForDiagonallyMoveIds = (moveFrom: string, cells: ICell
     }
 
     if (shouldCheckBottomLeft) {
-      tempResultForCell = canSuggestThisMoveForLinearPiece(cells, pieceToMove, bottomLeftI, bottomLeftJ);
+      tempResultForCell = canSuggestThisMoveForPiece(cells, pieceToMove, bottomLeftI, bottomLeftJ);
 
       if (tempResultForCell.canMove) {
         suggestionMoveIdsForBishop.push(cells[bottomLeftI][bottomLeftJ].id);
